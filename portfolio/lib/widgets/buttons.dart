@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/provider/choosen.dart';
 import 'package:provider/provider.dart';
 
-enum Choose { S, O }
-
 class SOButton extends StatefulWidget {
   @override
   _SOButtonState createState() => _SOButtonState();
@@ -12,7 +10,8 @@ class SOButton extends StatefulWidget {
 class _SOButtonState extends State<SOButton> {
   /*  bool sSelected = true;
   bool o = false; */
-  late final Choose ss;
+  late bool start = false;
+  late Choose ss = Choose.S;
   @override
   Widget build(BuildContext context) {
     final choosen = Provider.of<Choosen>(context);
@@ -22,13 +21,19 @@ class _SOButtonState extends State<SOButton> {
           TextButton(
             onPressed: () {
               setState(() {
+                start = true;
                 ss = Choose.S;
+                choosen.choice(start, ss);
               });
             },
             child: Text(
               "S",
               style: TextStyle(
-                color: ss == Choose.S ? Colors.black : Colors.grey,
+                color: start
+                    ? ss == Choose.S
+                        ? Colors.black
+                        : Colors.grey
+                    : Colors.grey,
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
@@ -45,7 +50,9 @@ class _SOButtonState extends State<SOButton> {
                 /* sSelected = false;
                 Navigator.of(context).pop(sSelected);
                 choosen.choice(sSelected); */
+                start = true;
                 ss = Choose.O;
+                choosen.choice(start, ss);
               });
             },
             child: Text(

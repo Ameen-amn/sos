@@ -13,7 +13,7 @@ class MainTable extends StatefulWidget {
 class _MainTableState extends State<MainTable> {
   @override
   Widget build(BuildContext context) {
-    final choice = Provider.of<Choosen>(context).fin();
+    final choice = Provider.of<Choosen>(context);
     return Container(
       color: Colors.black,
       height: 600,
@@ -26,7 +26,8 @@ class _MainTableState extends State<MainTable> {
         ),
         itemBuilder: (ctx, i) => Cell(
           id: i,
-          selected: choice,
+          selected: choice.stat(),
+          status: choice.fin(),
         ),
         itemCount: 228,
       ),
