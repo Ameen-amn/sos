@@ -20,6 +20,7 @@ class _SOButtonState extends State<SOButton> {
         children: [
           TextButton(
             onPressed: () {
+              
               setState(() {
                 start = true;
                 ss = Choose.S;

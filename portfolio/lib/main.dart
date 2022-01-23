@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/widgets/buttons.dart';
+
 import 'package:provider/provider.dart';
 import './screens/main_screen.dart';
 import 'provider/choosen.dart';
-
+import './provider/strike.dart';
 void main() {
   runApp(MyApp());
 }
@@ -17,6 +17,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => Choosen(),
         ),
+        
+        ChangeNotifierProvider(
+          create: (_) => Strike(),
+        ),
+
+        
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

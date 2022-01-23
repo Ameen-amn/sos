@@ -29,7 +29,7 @@ class _MainTableState extends State<MainTable> {
           selected: choice.stat(),
           status: choice.fin(),
         ),
-        itemCount: 228,
+        itemCount: 216,
       ),
     );
   }

@@ -13,15 +13,10 @@ class Choosen with ChangeNotifier {
   }
 
   bool fin() {
-    print(begin);
-    //notifyListeners();
     return begin;
   }
 
   Choose stat() {
-    print(select);
-    //notifyListeners();
-
     return select;
   }
 }
