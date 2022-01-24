@@ -37,6 +37,7 @@ class _CellState extends State<Cell> {
             used.lastSelectedCell(widget.id);
 
             used.active[widget.id] = cStatus;
+            used.OStrike();
           });
         }
       },
