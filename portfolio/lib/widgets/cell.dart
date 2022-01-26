@@ -38,6 +38,7 @@ class _CellState extends State<Cell> {
 
             used.active[widget.id] = cStatus;
             used.OStrike();
+            used.SStrike();
           });
         }
       },
