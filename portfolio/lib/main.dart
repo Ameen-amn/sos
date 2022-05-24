@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
-import './screens/main_screen.dart';
+import 'screens/homeScreen.dart';
 import 'provider/choosen.dart';
 import './provider/strike.dart';
 void main() {
@@ -26,11 +26,11 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'SOS',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: IntrdouctionScreen(),
+        home: HomeScreen(),
       ),
     );
   }

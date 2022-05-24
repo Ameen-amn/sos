@@ -16,7 +16,7 @@ class _MainTableState extends State<MainTable> {
     final choice = Provider.of<Choosen>(context);
     return Container(
       color: Colors.black,
-      height: 600,
+      height: ((MediaQuery.of(context).size.height * 0.618) ~/ 1).toDouble(),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 12,
@@ -29,7 +29,7 @@ class _MainTableState extends State<MainTable> {
           selected: choice.stat(),
           status: choice.fin(),
         ),
-        itemCount: 216,
+        itemCount: 12 * ((MediaQuery.of(context).size.height * 0.618) ~/ 1),
       ),
     );
   }

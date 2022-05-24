@@ -11,7 +11,7 @@ class _SOButtonState extends State<SOButton> {
   /*  bool sSelected = true;
   bool o = false; */
   late bool start = false;
-  late Choose ss = Choose.S;
+  late Choose option = Choose.S;
   @override
   Widget build(BuildContext context) {
     final choosen = Provider.of<Choosen>(context);
@@ -20,18 +20,17 @@ class _SOButtonState extends State<SOButton> {
         children: [
           TextButton(
             onPressed: () {
-              
               setState(() {
                 start = true;
-                ss = Choose.S;
-                choosen.choice(start, ss);
+                option = Choose.S;
+                choosen.choice(start, option);
               });
             },
             child: Text(
               "S",
               style: TextStyle(
                 color: start
-                    ? ss == Choose.S
+                    ? option == Choose.S
                         ? Colors.black
                         : Colors.grey
                     : Colors.grey,
@@ -52,20 +51,20 @@ class _SOButtonState extends State<SOButton> {
                 Navigator.of(context).pop(sSelected);
                 choosen.choice(sSelected); */
                 start = true;
-                ss = Choose.O;
-                choosen.choice(start, ss);
+                option = Choose.O;
+                choosen.choice(start, option);
               });
             },
             child: Text(
               "O",
               style: TextStyle(
-                color: ss == Choose.O ? Colors.black : Colors.grey,
+                color: option == Choose.O ? Colors.black : Colors.grey,
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
             ),
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.blue[200]),
+              backgroundColor: MaterialStateProperty.all(Colors.blue[100]),
             ),
           ),
         ],

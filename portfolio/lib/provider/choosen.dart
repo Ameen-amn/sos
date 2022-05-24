@@ -4,7 +4,7 @@ enum Choose { S, O, Empty }
 
 class Choosen with ChangeNotifier {
   late bool begin = false;
-  late Choose select = Choose.Empty;
+  late Choose select = Choose.S;
 
   void choice(bool status, Choose selected) {
     begin = status;

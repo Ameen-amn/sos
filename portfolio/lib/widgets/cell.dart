@@ -7,6 +7,7 @@ class Cell extends StatefulWidget {
   late final int id;
   late final bool status;
   late final Choose selected;
+
   Cell({
     required this.id,
     required this.selected,
@@ -19,47 +20,52 @@ class Cell extends StatefulWidget {
 
 class _CellState extends State<Cell> {
   late bool cSelected = false;
-  late Choose cStatus = Choose.S;
+  late Choose cStatus = Choose.Empty;
   late bool firstClick = true;
   late List<int> active = [];
 
   @override
   Widget build(BuildContext context) {
     final used = Provider.of<Strike>(context);
+    final choice = Provider.of<Choosen>(context);
+
     return GestureDetector(
-      onTap: () {
-        if (firstClick) {
-          setState(() {
-            cSelected = widget.status;
-            cStatus = widget.selected;
-            firstClick = false;
+        onTap: () {
+          if (choice.begin) {
+            if (firstClick) {
+              setState(() {
+                cSelected = widget.status;
+                cStatus = widget.selected;
+                firstClick = false;
 
-            used.lastSelectedCell(widget.id);
+                used.lastSelectedCell(widget.id);
 
-            used.active[widget.id] = cStatus;
-            used.OStrike();
-            used.SStrike();
-          });
-        }
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.blueGrey,
-          border: Border.all(
-              color: used.lastSelectedIndex == widget.id
-                  ? Colors.yellow
-                  : Colors.black45,
-              width: used.lastSelectedIndex == widget.id ? 1.5 : 0.5),
-        ),
-        child: Center(
-          child: Text(
-            cSelected ? (cStatus == Choose.S ? 'S' : 'O') : '',
-            style: TextStyle(
-              fontSize: 24,
+                used.active[widget.id] = cStatus;
+                used.OStrike();
+                used.SStrike();
+              });
+            }
+          } else {
+            SnackBar(content: Text('data'));
+          }
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.blueGrey,
+            border: Border.all(
+                color: used.lastSelectedIndex == widget.id
+                    ? Colors.yellow
+                    : Colors.black45,
+                width: used.lastSelectedIndex == widget.id ? 1.5 : 0.5),
+          ),
+          child: Center(
+            child: Text(
+              cSelected ? (cStatus == Choose.S ? 'S' : 'O') : '',
+              style: TextStyle(
+                fontSize: 24,
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
